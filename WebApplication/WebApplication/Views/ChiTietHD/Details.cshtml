@@ -1,0 +1,50 @@
+﻿@model WebApplication.Models.ChiTietHD
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChiTietHD</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BangHoaDon.TenKhachHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BangHoaDon.TenKhachHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BangSanPham.MaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BangSanPham.MaSP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

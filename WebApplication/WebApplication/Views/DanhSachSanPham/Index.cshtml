@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication.Models.BangSanPham>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="DanhSachSanPham" class="table">
+    <thead>
+        <tr>
+            <th>Mã SP</th>
+            <th>Tên SP</th>
+            <th>Loại</th>
+            <th>Giá bán</th>
+            <th>Giá gốc</th>
+            <th>Giá góp</th>
+            <th>Tồn</th>
+            <th>Hình ảnh</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td>@item.LoaiSanPham.TenLoai</td>
+                <td>@item.GiaBan.ToString("N0")</td>
+                <td>@item.GiaGoc.ToString("N0")</td>
+                <td>@item.GiaGop.ToString("N0")</td>
+                <td>@item.SoLuongTon.ToString("N0")</td>
+                <td>
+                    <img src="@Url.Action("Details", new  { id = item.id })" width="70" height="50" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.id })">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = item.id })">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#DanhSachSanPham').DataTable();
+    });
+</script>
+}

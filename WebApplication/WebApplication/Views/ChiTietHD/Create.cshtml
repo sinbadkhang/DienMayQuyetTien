@@ -1,0 +1,51 @@
+﻿@model WebApplication.Models.ChiTietHD
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create2", "ChiTietHD")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Thông tin các sản phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.HD_id)
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.SP_id, "Sản phẩm", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SP_id, (SelectList)ViewData["SP_id"], String.Empty)
+                    @Html.ValidationMessageFor(model => model.SP_id)
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.DonGiaBan, "Đơn giá bán", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DonGiaBan)
+                    @Html.ValidationMessageFor(model => model.DonGiaBan)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.SoLuong, "Số lượng", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SoLuong)
+                    @Html.ValidationMessageFor(model => model.SoLuong)
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm sản phẩm" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
