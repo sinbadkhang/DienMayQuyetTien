@@ -77,6 +77,8 @@ namespace WebApplication.Controllers
                 ModelState.AddModelError("GiaBan", "Giá bán phải lớn hơn giá gốc!");
             if (model.GiaGop < model.GiaGoc)
                 ModelState.AddModelError("GiaGop", "Giá góp phải lớn hơn giá gốc!");
+            if (model.SoLuongTon < 0)
+                ModelState.AddModelError("SoLuongTon", "Số lượng tồn phải lớn hơn 0!");
         }
 
         // GET: /BangSanPham/Edit/5
