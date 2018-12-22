@@ -15,7 +15,7 @@
     @Html.ActionLink("Create New", "Create")
 </button>
 <hr />
-<table id="BangSanPham" class="table hover striped compact">
+<table id="myTable" class="table hover striped compact">
     <thead>
         <tr>
             <th>Mã SP</th>
@@ -44,13 +44,13 @@
                     @*<img src="@Url.Action("Details", new { id = item.id })" width="150" height="100" />*@
                 </td>
                 <td>      
-                    <a title="Sửa" href="@Url.Action("Edit", new { id = item.id })">
-                        <button class="btn btn-default">
-                        ✏
+                    <a title="Sửa" href="@Url.Action("Edit", new { id = item.id })" style="text-decoration: none;">
+                        <button class="btn btn-sm btn-info" >
+                            ✎
                         </button>
                     </a>    
                     <a title="Xóa" href="@Url.Action("Delete", new { id = item.id })">
-                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                        <button type="button" class="btn btn-sm btn-danger" aria-label="Left Align">
                             ❌
                         </button>
                     </a>
@@ -65,7 +65,7 @@
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#BangSanPham').DataTable();
+        $('#myTable').DataTable();
     });
 </script>
 }

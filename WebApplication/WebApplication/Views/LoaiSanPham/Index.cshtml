@@ -16,25 +16,45 @@
     @Html.ActionLink("Create New", "Create")
 </button>
 <hr />
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenLoai)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenLoai)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
-
+<table id="myTable" class="table hover striped compact" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenLoai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLoai)
+                </td>
+                <td align="right">
+                    <a title="Sửa" href="@Url.Action("Edit", new { id = item.id })" style="text-decoration: none;">
+                        <button class="btn btn-sm btn-info">
+                            ✎
+                        </button>
+                    </a>
+                    <a title="Xóa" href="@Url.Action("Delete", new { id = item.id })">
+                        <button type="button" class="btn btn-sm btn-danger" aria-label="Left Align">
+                            ❌
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+@section scripts {
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
